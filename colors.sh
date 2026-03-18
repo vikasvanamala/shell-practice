@@ -1,6 +1,5 @@
 #!/bin/bash
 
-USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -24,7 +23,7 @@ validate(){
 }
 
 dnf install mysql -y
-validate($? mysql)
+validate $? mysql
 
 dnf install nginx -y
-validate($? nginx) 
+validate $? nginx 
