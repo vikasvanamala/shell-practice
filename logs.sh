@@ -8,8 +8,8 @@ N="\e[0m"
 userid=$(id -u)
 
 logs_folder="/var/logs/shell-script"
-scriptname=$(echo $0 | cut -d "." -f1)
-log_file=$logs_folder/$scriptname.log
+scriptname=$( echo $0 | cut -d "." -f1 )
+log_file="$logs_folder/$scriptname.log"
 
 mkdir -p logs_folder 
 echo " script started excution at $(date)"
