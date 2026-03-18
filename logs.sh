@@ -7,7 +7,7 @@ N="\e[0m"
 
 userid=$(id -u)
 
-logs_folder="/var/logs/shell-script"
+logs_folder="/var/log/shell-script"
 scriptname=$( echo $0 | cut -d "." -f1 )
 log_file="$logs_folder/$scriptname.log"
 
