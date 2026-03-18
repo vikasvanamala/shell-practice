@@ -8,7 +8,7 @@ N="\e[0m"
 userid=$(id -u)
 
 if [ $userid -ne 0 ]; then
-    echo -e " $G Error: please run with root access $N"
+    echo -e " $R Error: please run with root access $N"
     exit 1;
 fi
 
@@ -17,13 +17,23 @@ validate(){
     echo -e "$R $2 installation failed $N"
     exit 1
    else
-    echo -e "$Y $2 installation success $N"
+    echo -e "$G $2 installation success $N"
    fi 
 
 }
 
-dnf install mysql -y
-validate $? mysql
+dnf list installed mysql
+if [ $? -ne 0 ]; then
+    dnf install mysql -y
+    validate $? mysql
+else
+    echo -e "$Y mysql is already installed skipping... $N"
+fi    
 
-dnf install nginx -y
-validate $? nginx 
+dnf list installed nginx
+if [ $? -ne 0 ]; then
+    dnf install nginx -y
+    validate $? nginx 
+else
+    echo -e "$Y nginx is already installed skipping.. $N"
+fi        
